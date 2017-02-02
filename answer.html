@@ -1,0 +1,27 @@
+{% include 'header.html' %}
+
+Sample: <br/><br/><tt><pre>{{ page['sample']|e }}</pre></tt>
+<br/>
+
+{# jinja doesn't like 'is False'. You have to do == False... #}
+
+{% if page['paid'] == False %}
+
+<script src="/static/qrcode.min.js"></script>
+<h4>That was just the sample. To unlock the answer, send {{ page['bitcoins'] }}BTC ({{ page['total_satoshis'] }} Satoshis) to <a href="bitcoin:{{ page['address'] }}?amount={{ page['bitcoins'] }}">{{ page['address'] }}</a>. <a href="https://www.bitcoin.com" target="_blank">Are you new to Bitcoin?</a></h4>
+<h4>There are no refunds through Answer.Market! Read here for <a href="/about">more details</a>.</h4>
+<div id="address_qrcode"></div>
+<script type="text/javascript">
+new QRCode(document.getElementById("address_qrcode"), "bitcoin:{{ page['address'] }}?amount={{ page['bitcoins'] }}");
+</script>
+<h4><a href="">Click here or refresh after you've sent payment.</a></h4>
+<noscript><blink><h1>QR code generator requires Javascript!</h1></blink></noscript>
+{% else %}
+
+<br/>Answer: <br/><br/><tt><pre>{{ page['answer']|e }}</pre></tt>
+
+{% endif %}
+
+<h4>Want to see <a href="/answers">other answers</a>?</h4>
+
+{% include 'footer.html' %}

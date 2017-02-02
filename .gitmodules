@@ -1,0 +1,3 @@
+[submodule "static/bitcoin-fiat"]
+	path = static/bitcoin-fiat
+	url = https://github.com/coinfee/bitcoin-fiat.git

@@ -1,0 +1,24 @@
+{% include 'header.html' %}
+<script src="/static/json-forms.js"></script>
+<script src="/static/bitcoin-fiat/bitcoin-fiat.js"></script>
+<h3>Put a Bitcoin paywall in front of text data with Answer.Market.</h3>
+<noscript><h2>This form won't work without Javascript. Consider using our JSON API directly.</h2></noscript>
+<form enctype='application/json' action="/answer" method="post">
+    <b>Sample/Teaser:</b> <small>This is always visible with the link.</small><br/>
+    <textarea name="sample" style="width:100%;height:30%;font-family: monospace;" placeholder="In response to https://voat.co/v/answermarket/1337415. You asked for a Bitcoin API that supports split payments. I did some research and came up with another one. No accounts are required to use the service. I think I have what you are looking for. I hope you buy my answer!"></textarea><br/>
+    <b>Answer:</b> <small>This is only visible once paid for.</small><br/>
+    <textarea name="answer" style="width:100%;height:30%;font-family: monospace;" placeholder="The API I found is https://coinfee.net/. I hope this helps!"></textarea><br/>
+    <b>Bitcoin Address:</b> <input style="font-family: monospace;" name="address" size="38" placeholder="1...."><small> (<a href="https://www.bitcoin.com" target="_blank">Bitcoin address</a> that will be paid when the answer is purchased)</small><br/>
+    <b>Satoshis:</b> <input id="satoshis" name="satoshis" type="number" value="100000" min="100000" max="100000000000" onchange="BitcoinFiat(this, 'usd');"><small> $<span id="usd">(Pending)</span>~ (USD) (How much you want to be paid.)</small><br/>
+    <i>A 10% + 15,000 Satoshi fee will be added to this.</i><br/>
+    <b>Public:</b> <input name="public" type="checkbox" value=true><small>(While anyone with the link to your answer can view it, this controls if we will add it to our <a href="/answers">answers index</a>, which <u>may increase your odds of having your answer purchased.</u>)</small><br/>
+    <br/>
+    <input type="submit" value="Submit"> <div id="response_status"></div>
+</form>
+<script>
+    document.getElementById('satoshis').onchange();
+    JSONForms.enable();
+</script>
+<h4>Want to submit a bounty or find something to solve? <a href="https://voat.co/v/answermarket/">/v/answermarket</a></h4>
+<h5><a href="/about">Still confused? Learn more about Answer.Market</a></h5>
+{% include 'footer.html' %}

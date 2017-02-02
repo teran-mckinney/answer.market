@@ -1,0 +1,5 @@
+python-bitcoinaddress==0.2.2
+jinja2==2.8
+yaml==3.12
+datadog==0.14.0
+coinfee==0.1.1

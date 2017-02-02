@@ -1,0 +1,11 @@
+{% include 'header.html' %}
+
+<h2>Answer.Market Public Answer Index</h2>
+
+{% for answer in page %}
+<li><a href="/answer/{{ answer['id'] }}">{{ answer['sample']|e }}</a></li>
+{% endfor %}
+
+<h4><a href="/">Submit your own answer.</a></h4>
+
+{% include 'footer.html' %}
